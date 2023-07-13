@@ -1,11 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
+const files = require('./controllers/files')
 
-app.get('/', (req, res) => {
-  res.send('Hello backend World!')
-})
+app.get('/files/data', files.data)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+if (process.env.NODE_ENV === 'test') {
+  module.exports = app
+} else {
+  app.listen(port, () => {
+    console.log(`Backend listening on port ${port}`)
+  })
+}
