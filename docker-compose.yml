@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  backend: 
+    image: node:14-alpine
+    command: sh -c "yarn install && yarn dev"
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /backend
+    volumes:
+      - ./backend/:/backend
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - HOST=
+  frontend: 
+    image: node:16-alpine
+    command: sh -c "yarn install && yarn dev"
+    ports:
+      - 127.0.0.1:8080:8080
+    working_dir: /frontend
+    volumes:
+      - ./frontend/:/frontend
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - HOST=
