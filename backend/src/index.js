@@ -9,6 +9,8 @@ app.use(cors())
 
 app.get('/files/data', files.data)
 
+app.get('/files/list', files.list)
+
 if (process.env.NODE_ENV === 'test') {
   module.exports = app
 } else {

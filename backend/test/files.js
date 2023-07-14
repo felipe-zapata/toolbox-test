@@ -32,6 +32,22 @@ describe('Files', () => {
         })
     })
   })
+
+  describe('/GET /files/list', () => {
+    it('it should GET all the files list', (done) => {
+      chai.request(index)
+        .get('/files/list')
+        .end((err, res) => {
+          res.should.have.status(200)
+          res.body.should.be.a('array')
+          res.body.forEach(file => {
+            file.should.be.a('string')
+          })
+          done()
+        })
+    })
+  })
+
   describe('Parsed content from files', () => {
     it('it should parse the files in a proper way', (done) => {
       const file = 'file,text,number,hex\nfile1,text1,1,0x1\nfile2,text2,2'

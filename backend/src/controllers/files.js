@@ -22,7 +22,18 @@ files.data = async (req, res) => {
     const filteredFilesData = filesData.filter(file => file !== '')
     return res.send(filteredFilesData)
   } catch (error) {
-    console.log('Error getting files', error)
+    console.log('Error getting files data', error)
+    return error
+  }
+}
+
+files.list = async (req, res) => {
+  try {
+    const files = await filesModel.getFiles(req, res)
+    const fileNames = utils.extractFileNames(files)
+    return res.send(fileNames)
+  } catch (error) {
+    console.log('Error getting files list', error)
     return error
   }
 }
