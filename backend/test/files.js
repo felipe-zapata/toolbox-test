@@ -33,6 +33,27 @@ describe('Files', () => {
     })
   })
 
+  describe('/GET /files/data', () => {
+    it('it should GET one of the files and its data', (done) => {
+      chai.request(index)
+        .get('/files/data?fileName=test2.csv')
+        .end((err, res) => {
+          res.should.have.status(200)
+          res.body.should.be.a('array')
+          res.body.forEach(file => {
+            file.should.have.property('file')
+            file.should.have.property('lines')
+            file.lines.forEach(line => {
+              line.should.have.property('text')
+              line.should.have.property('number')
+              line.should.have.property('hex')
+            })
+          })
+          done()
+        })
+    })
+  })
+
   describe('/GET /files/list', () => {
     it('it should GET all the files list', (done) => {
       chai.request(index)

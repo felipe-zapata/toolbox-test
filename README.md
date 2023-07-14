@@ -20,3 +20,4 @@ Just execute `docker-compose up -d` and the frontend will be available at `http:
 - Didn't declutter the generated code from create-react-app
 - Didn't add router because we only have one page
 - Didn'd add styling for each component
+- Didn't refactor the files/data endpoint to take advantage of the files/list endpoint and avoid the double request

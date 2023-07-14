@@ -16,6 +16,10 @@ const getFile = async (fileName) => {
 
 files.data = async (req, res) => {
   try {
+    if(req?.query?.fileName) {
+      const fileData = await getFile(req.query.fileName)
+      return res.send([fileData])
+    }
     const files = await filesModel.getFiles(req, res)
     const fileNames = utils.extractFileNames(files)
     const filesData = await Promise.all(fileNames.map(getFile))
