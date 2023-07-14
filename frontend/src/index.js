@@ -1,11 +1,17 @@
-const express = require('express')
-const app = express()
-const port = 8080
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
-app.get('/', (req, res) => {
-  res.send('Hello frontend World!')
-})
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})

@@ -1,0 +1,11 @@
+.header {
+  background-color: red;
+  margin: 0;
+  padding: 1rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.table-head{
+  border-bottom: 3px solid black;
+}

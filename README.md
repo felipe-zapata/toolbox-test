@@ -16,3 +16,7 @@ Just execute `docker-compose up -d` and the frontend will be available at `http:
 - Didn't get 100% coverage, but it's close enough.
 - Didn't handle properly the errors in the missing files case. What should be the output? Logged for now
 - Didn't move the test variables to another file
+- Used create-react-app to bootstrap the frontend
+- Didn't declutter the generated code from create-react-app
+- Didn't add router because we only have one page
+- Didn'd add styling for each component

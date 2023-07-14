@@ -45,13 +45,13 @@ describe('Files', () => {
           }
         ]
       }
-      expect(utils.extractFileData('file1', file)).to.deep.equal(expected);
+      expect(utils.extractFileData('file1', file)).to.deep.equal(expected)
       const expected2 = {
         file: 'file2',
         lines: []
       }
-      expect(utils.extractFileData('file2', '')).to.deep.equal(expected2);
-      expect(utils.extractFileData('file2', undefined)).to.deep.equal(expected2);
+      expect(utils.extractFileData('file2', '')).to.deep.equal(expected2)
+      expect(utils.extractFileData('file2', undefined)).to.deep.equal(expected2)
       done()
     })
     it('it should verify content on files', (done) => {
