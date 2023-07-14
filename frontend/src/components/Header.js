@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const Header = () => {
   return (
-      <h1 className='header'>React Test App</h1>
-  );
+    <h1 className='header'>React Test App</h1>
+  )
 }
 
-export default Header;
+export default Header

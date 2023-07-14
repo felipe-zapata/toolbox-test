@@ -1,63 +1,63 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getFiles, getFileList } from '../services/filesService';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { getFiles, getFileList } from '../services/filesService'
 
 const initialState = {
   files: [],
   list: [],
-  selectedFile: '',
-};
+  selectedFile: ''
+}
 
 export const filesAsync = createAsyncThunk(
   'getFiles',
   async () => {
-    const response = await getFiles();
-    return response;
+    const response = await getFiles()
+    return response
   }
-);
+)
 
 export const fileAsync = createAsyncThunk(
   'getFile',
   async (fileName) => {
-    const response = await getFiles(fileName);
-    return response;
+    const response = await getFiles(fileName)
+    return response
   }
-);
+)
 
 export const fileListAsync = createAsyncThunk(
   'getFileList',
   async () => {
-    const response = await getFileList();
-    return response;
+    const response = await getFileList()
+    return response
   }
-);
+)
 
 export const filesSlice = createSlice({
   name: 'files',
   initialState,
   reducers: {
     update: (state, action) => {
-      state.files = action.payload;
+      state.files = action.payload
     },
     updateSelectedFile: (state, action) => {
-      state.selectedFile = action.payload;
+      state.selectedFile = action.payload
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(filesAsync.fulfilled, (state, action) => {
-        state.files = action.payload;
+        state.files = action.payload
       })
       .addCase(fileAsync.fulfilled, (state, action) => {
-        state.files = action.payload;
+        state.files = action.payload
       })
       .addCase(fileListAsync.fulfilled, (state, action) => {
-        state.list = action.payload;
-      });
-  },
-});
+        state.list = action.payload
+      })
+  }
+})
 
-export const { update } = filesSlice.actions;
+export const { update } = filesSlice.actions
 
-export const selectFiles = (state) => state.files;
+export const selectFiles = (state) => state.files
 
-export default filesSlice.reducer;
+export default filesSlice.reducer

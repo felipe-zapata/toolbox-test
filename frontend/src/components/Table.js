@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectFiles, filesAsync } from '../redux/reducer';
+import React, { useEffect } from 'react'
+import Table from 'react-bootstrap/Table'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectFiles, filesAsync } from '../redux/reducer'
 
 const FileTable = () => {
-  const files = useSelector(selectFiles).files;
-  const dispatch = useDispatch();
+  const files = useSelector(selectFiles).files
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(filesAsync());
-  }, [dispatch]);
+    dispatch(filesAsync())
+  }, [dispatch])
 
   const filesToRender = (files) => {
     if (files?.length > 0) {
       return files.map((file, indexFiles) => {
         return file?.lines?.map((line, indexLine) => {
-          const key = indexFiles + indexLine;
+          const key = indexFiles + indexLine
           return (
             <tr key={key}>
               <td>{file.file}</td>
@@ -43,7 +43,7 @@ const FileTable = () => {
         {filesToRender(files)}
       </tbody>
     </Table>
-  );
+  )
 }
 
-export default FileTable;
+export default FileTable

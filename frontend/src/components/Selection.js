@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectFiles, fileListAsync, fileAsync } from '../redux/reducer';
+import React, { useEffect } from 'react'
+import Form from 'react-bootstrap/Form'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectFiles, fileListAsync, fileAsync } from '../redux/reducer'
 
 const Selection = () => {
-  const list = useSelector(selectFiles).list;
-  const dispatch = useDispatch();
+  const list = useSelector(selectFiles).list
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fileListAsync());
-  }, [dispatch]);
+    dispatch(fileListAsync())
+  }, [dispatch])
 
   const listToRender = (list) => {
     if (list?.length > 0) {
@@ -19,19 +19,18 @@ const Selection = () => {
         )
       })
     }
-
   }
 
   const callFileAsync = (e) => {
-    dispatch(fileAsync(e.target.value));
+    dispatch(fileAsync(e.target.value))
   }
 
   return (
     <Form.Select className='select' onChange={callFileAsync}>
       <option>Select a file</option>
       {listToRender(list)}
-  </Form.Select>
-  );
+    </Form.Select>
+  )
 }
 
-export default Selection;
+export default Selection
