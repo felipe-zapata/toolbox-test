@@ -9,12 +9,12 @@ const FileTable = () => {
 
   useEffect(() => {
     dispatch(filesAsync());
-  }, []);
+  }, [dispatch]);
 
   const filesToRender = (files) => {
     if (files?.length > 0) {
       return files.map((file, indexFiles) => {
-        return file.lines.map((line, indexLine) => {
+        return file?.lines?.map((line, indexLine) => {
           const key = indexFiles + indexLine;
           return (
             <tr key={key}>

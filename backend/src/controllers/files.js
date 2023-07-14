@@ -16,7 +16,7 @@ const getFile = async (fileName) => {
 
 files.data = async (req, res) => {
   try {
-    if(req?.query?.fileName) {
+    if(!!req?.query?.fileName) {
       const fileData = await getFile(req.query.fileName)
       return res.send([fileData])
     }
